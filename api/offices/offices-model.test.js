@@ -31,6 +31,34 @@ describe('Office model', () => {
         })
         test('resolved to the correct shapes', async () => {
             expect(data).toMatchObject(offices)
+            expect(data).toEqual([
+                    {
+                    id: 1,
+                    name: "Western Dental",
+                    address: "1234 west st"
+                    },
+                    {
+                    id: 2,
+                    name: "Eastern Dental",
+                    address: "1234 east st"
+                    },
+                    {
+                    id: 3,
+                    name: "Southern Dental",
+                    address: "1234 south st"
+                    },
+                    {
+                    id: 4,
+                    name: "Northern Dental",
+                    address: "1234 north st"
+                    }
+            ])
+        })
+    })
+    describe('getById()', () => {
+        test('returns the correct office', async () => {
+            const data = await Office.getById('1')
+            expect(data).toMatchObject({ id:1, name: 'Western Dental', address: '1234 west st'})
         })
     })
 })
